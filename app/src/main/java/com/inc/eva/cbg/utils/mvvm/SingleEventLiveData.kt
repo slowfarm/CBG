@@ -11,7 +11,10 @@ class SingleEventLiveData<T> : MutableLiveData<T>() {
     private val pending = AtomicBoolean(false)
 
     @MainThread
-    override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
+    override fun observe(
+        owner: LifecycleOwner,
+        observer: Observer<in T>,
+    ) {
         if (hasActiveObservers()) {
             Timber.d("Multiple observers registered but only one will be notified of changes.")
         }
@@ -43,4 +46,3 @@ class SingleEventLiveData<T> : MutableLiveData<T>() {
         postValue(null)
     }
 }
-

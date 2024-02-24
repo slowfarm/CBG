@@ -10,8 +10,6 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 @Module
 object RetrofitModule {
-
     @Provides
-    fun provideRemoteService(retrofitProvider: RetrofitProvider): RemoteService =
-        retrofitProvider.provideRetrofit()
+    fun provideRemoteService(retrofitProvider: RetrofitProvider): RemoteService = retrofitProvider.provideRetrofit()
 }

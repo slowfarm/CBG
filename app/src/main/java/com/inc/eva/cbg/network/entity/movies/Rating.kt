@@ -12,5 +12,5 @@ data class Rating(
     @SerializedName("russianFilmCritics")
     val russianFilmCritics: Double,
     @SerializedName("await")
-    val await: String
+    val await: String,
 )

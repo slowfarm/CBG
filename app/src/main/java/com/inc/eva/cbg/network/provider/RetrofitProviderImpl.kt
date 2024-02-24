@@ -16,25 +16,27 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RetrofitProviderImpl @Inject constructor(
-    @ApplicationContext private val appContext: Context,
-) : RetrofitProvider {
+class RetrofitProviderImpl
+    @Inject
+    constructor(
+        @ApplicationContext private val appContext: Context,
+    ) : RetrofitProvider {
+        override fun provideRetrofit(): RemoteService {
+            val client =
+                OkHttpClient.Builder()
+                    .connectTimeout(5L, TimeUnit.SECONDS)
+                    .readTimeout(5L, TimeUnit.SECONDS)
+                    .hostnameVerifier { _, _ -> true }
+                    .addNetworkInterceptor(HttpLoggingInterceptor().apply { level = BODY })
+                    .addInterceptor(CheckNetworkInterceptor(appContext))
+                    .addInterceptor(BasicAuthInterceptor())
+                    .build()
 
-    override fun provideRetrofit(): RemoteService {
-        val client = OkHttpClient.Builder()
-            .connectTimeout(5L, TimeUnit.SECONDS)
-            .readTimeout(5L, TimeUnit.SECONDS)
-            .hostnameVerifier { _, _ -> true }
-            .addNetworkInterceptor(HttpLoggingInterceptor().apply { level = BODY })
-            .addInterceptor(CheckNetworkInterceptor(appContext))
-            .addInterceptor(BasicAuthInterceptor())
-            .build()
-
-        return Retrofit.Builder()
-            .baseUrl("https://api.kinopoisk.dev/")
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build()
-            .create(RemoteService::class.java)
+            return Retrofit.Builder()
+                .baseUrl("https://api.kinopoisk.dev/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+                .build()
+                .create(RemoteService::class.java)
+        }
     }
-}

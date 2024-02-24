@@ -13,10 +13,8 @@ import com.inc.eva.cbg.view.main.MainFragmentDirections.Companion.mainToMovies
 import com.inc.eva.cbg.view.main.adapter.CategoryAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>() {
-
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMainBinding =
         FragmentMainBinding::inflate
 
@@ -24,7 +22,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     private val adapter by lazy { CategoryAdapter() }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {

@@ -7,6 +7,5 @@ data class Category(
     val name: String,
     @SerializedName("slug")
     val slug: String,
-
     val checked: Boolean = false,
 )

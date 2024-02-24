@@ -12,5 +12,5 @@ data class Movies(
     @SerializedName("page")
     val page: Int,
     @SerializedName("pages")
-    val pages: Int
+    val pages: Int,
 )

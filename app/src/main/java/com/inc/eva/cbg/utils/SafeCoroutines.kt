@@ -9,13 +9,14 @@ import kotlinx.coroutines.withContext
 
 inline fun CoroutineScope.launchIO(
     crossinline safeAction: suspend () -> Unit,
-    crossinline onError: suspend (Throwable) -> Unit
+    crossinline onError: suspend (Throwable) -> Unit,
 ): Job {
-    val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        launch(Dispatchers.Main) {
-            onError.invoke(throwable)
+    val exceptionHandler =
+        CoroutineExceptionHandler { _, throwable ->
+            launch(Dispatchers.Main) {
+                onError.invoke(throwable)
+            }
         }
-    }
 
     return this.launch(exceptionHandler + Dispatchers.IO) {
         safeAction.invoke()
@@ -24,13 +25,14 @@ inline fun CoroutineScope.launchIO(
 
 inline fun CoroutineScope.launchMain(
     crossinline safeAction: suspend () -> Unit,
-    crossinline onError: suspend (Throwable) -> Unit
+    crossinline onError: suspend (Throwable) -> Unit,
 ): Job {
-    val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        launch(Dispatchers.Main) {
-            onError.invoke(throwable)
+    val exceptionHandler =
+        CoroutineExceptionHandler { _, throwable ->
+            launch(Dispatchers.Main) {
+                onError.invoke(throwable)
+            }
         }
-    }
 
     return this.launch(exceptionHandler + Dispatchers.Main) {
         safeAction.invoke()
@@ -38,9 +40,7 @@ inline fun CoroutineScope.launchMain(
 }
 
 @Suppress("NeedToUseCustomWithContextRule")
-suspend inline fun <T> withIO(noinline block: suspend CoroutineScope.() -> T): T =
-    withContext(Dispatchers.IO, block)
+suspend inline fun <T> withIO(noinline block: suspend CoroutineScope.() -> T): T = withContext(Dispatchers.IO, block)
 
 @Suppress("NeedToUseCustomWithContextRule")
-suspend inline fun <T> withMain(noinline block: suspend CoroutineScope.() -> T): T =
-    withContext(Dispatchers.Main, block)
+suspend inline fun <T> withMain(noinline block: suspend CoroutineScope.() -> T): T = withContext(Dispatchers.Main, block)

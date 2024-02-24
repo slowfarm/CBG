@@ -6,11 +6,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RemoteRepositoryImpl @Inject constructor(
-    private val remoteService: RemoteService,
-) : RemoteRepository {
-    override suspend fun getCategories(): List<Category> = remoteService.getCategories()
+class RemoteRepositoryImpl
+    @Inject
+    constructor(
+        private val remoteService: RemoteService,
+    ) : RemoteRepository {
+        override suspend fun getCategories(): List<Category> = remoteService.getCategories()
 
-    override suspend fun getMoviesByCategory(categories: Array<String>) =
-        remoteService.getMovies(categories)
-}
+        override suspend fun getMoviesByCategory(categories: Array<String>) = remoteService.getMovies(categories)
+    }

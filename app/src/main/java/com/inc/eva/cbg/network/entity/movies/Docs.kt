@@ -3,61 +3,60 @@ package com.inc.eva.cbg.network.entity.movies
 import com.google.gson.annotations.SerializedName
 
 data class Docs(
-    @SerializedName("id") 
+    @SerializedName("id")
     val id: Int,
-    @SerializedName("name") 
+    @SerializedName("name")
     val name: String,
-    @SerializedName("alternativeName") 
+    @SerializedName("alternativeName")
     val alternativeName: String,
-    @SerializedName("names") 
+    @SerializedName("names")
     val names: List<Names>,
-    @SerializedName("type") 
+    @SerializedName("type")
     val type: String,
-    @SerializedName("typeNumber") 
+    @SerializedName("typeNumber")
     val typeNumber: Int,
-    @SerializedName("year") 
+    @SerializedName("year")
     val year: Int,
-    @SerializedName("description") 
+    @SerializedName("description")
     val description: String,
-    @SerializedName("shortDescription") 
+    @SerializedName("shortDescription")
     val shortDescription: String,
-    @SerializedName("status") 
+    @SerializedName("status")
     val status: String,
-    @SerializedName("rating") 
+    @SerializedName("rating")
     val rating: Rating,
-    @SerializedName("votes") 
+    @SerializedName("votes")
     val votes: Votes,
-    @SerializedName("movieLength") 
+    @SerializedName("movieLength")
     val movieLength: String,
-    @SerializedName("totalSeriesLength") 
+    @SerializedName("totalSeriesLength")
     val totalSeriesLength: String,
-    @SerializedName("seriesLength") 
+    @SerializedName("seriesLength")
     val seriesLength: Int,
-    @SerializedName("ratingMpaa") 
+    @SerializedName("ratingMpaa")
     val ratingMpaa: String,
-    @SerializedName("ageRating") 
+    @SerializedName("ageRating")
     val ageRating: Int,
-    @SerializedName("poster") 
+    @SerializedName("poster")
     val poster: Poster,
-    @SerializedName("backdrop") 
+    @SerializedName("backdrop")
     val backdrop: Backdrop,
-    @SerializedName("genres") 
+    @SerializedName("genres")
     val genres: List<Genres>,
-    @SerializedName("countries") 
+    @SerializedName("countries")
     val countries: List<Countries>,
-    @SerializedName("releaseYears") 
+    @SerializedName("releaseYears")
     val releaseYears: List<ReleaseYears>,
-    @SerializedName("top10") 
+    @SerializedName("top10")
     val top10: String,
-    @SerializedName("top250") 
+    @SerializedName("top250")
     val top250: Int,
-    @SerializedName("isSeries") 
+    @SerializedName("isSeries")
     val isSeries: Boolean,
-    @SerializedName("ticketsOnSale") 
+    @SerializedName("ticketsOnSale")
     val ticketsOnSale: Boolean,
-    @SerializedName("logo") 
+    @SerializedName("logo")
     val logo: Logo,
-    @SerializedName("enName") 
-    val enName: String
-
+    @SerializedName("enName")
+    val enName: String,
 )

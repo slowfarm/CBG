@@ -5,6 +5,6 @@ import com.google.gson.annotations.SerializedName
 data class Poster(
     @SerializedName("url")
     val url: String,
-    @SerializedName("previewUrl") 
+    @SerializedName("previewUrl")
     val previewUrl: String,
 )

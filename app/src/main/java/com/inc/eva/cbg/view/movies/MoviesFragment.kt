@@ -13,7 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
-
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMoviesBinding =
         FragmentMoviesBinding::inflate
 
@@ -23,7 +22,10 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>() {
 
     private val args by navArgs<MoviesFragmentArgs>()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvMovies.adapter = adapter

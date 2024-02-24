@@ -10,5 +10,7 @@ interface RemoteService {
     suspend fun getCategories(): List<Category>
 
     @GET("/v1.4/movie?page=1&limit=10")
-    suspend fun getMovies(@Query("genres.name") categories: Array<String>): Movies
+    suspend fun getMovies(
+        @Query("genres.name") categories: Array<String>,
+    ): Movies
 }

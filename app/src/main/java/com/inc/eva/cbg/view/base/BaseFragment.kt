@@ -8,12 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
-
-    private var _binding: Binding? = null
     abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> Binding
-
-    protected val binding: Binding
-        get() = _binding as Binding
+    val binding: Binding get() = _binding as Binding
+    private var _binding: Binding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,

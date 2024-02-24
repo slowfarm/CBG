@@ -7,7 +7,6 @@ import okhttp3.Response
 import java.io.IOException
 
 class CheckNetworkInterceptor(private val context: Context) : Interceptor {
-
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         if (!context.isNetworkAvailable()) {

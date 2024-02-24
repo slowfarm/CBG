@@ -12,17 +12,19 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieViewModel @Inject constructor(
-    private val remoteRepository: RemoteRepository,
-) : ViewModel() {
-    val items = MutableLiveData<Movies>()
+class MovieViewModel
+    @Inject
+    constructor(
+        private val remoteRepository: RemoteRepository,
+    ) : ViewModel() {
+        val items = MutableLiveData<Movies>()
 
-    fun getMovies(categories: Array<String>) {
-        viewModelScope.launchIO(
-            {
-                withMain { items.value = remoteRepository.getMoviesByCategory(categories) }
-            },
-            { Timber.e(it) },
-        )
+        fun getMovies(categories: Array<String>) {
+            viewModelScope.launchIO(
+                {
+                    withMain { items.value = remoteRepository.getMoviesByCategory(categories) }
+                },
+                { Timber.e(it) },
+            )
+        }
     }
-}

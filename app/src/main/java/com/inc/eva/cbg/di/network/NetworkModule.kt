@@ -7,7 +7,6 @@ import com.inc.eva.cbg.network.repository.RemoteRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ServiceComponent
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
 
@@ -17,7 +16,6 @@ import dagger.hilt.components.SingletonComponent
 )
 @Module
 abstract class NetworkModule {
-
     @Binds
     abstract fun bindRemoteRepository(repository: RemoteRepositoryImpl): RemoteRepository
 
