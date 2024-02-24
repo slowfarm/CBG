@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CBG</string>
+    <string name="network_unavailable">Network unavailable</string>
+</resources>
